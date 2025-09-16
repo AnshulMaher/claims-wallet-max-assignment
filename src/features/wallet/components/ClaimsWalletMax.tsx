@@ -25,6 +25,22 @@ import { transactions } from '@/features/wallet/data/transactionData';
 import { appConfig } from '@/shared/utils/appConfig';
 import { PageHelpButton } from '@/features/help/components/PageHelpButton';
 import { ClaimsWalletCardPlus } from './ClaimsWalletCardPlus';
+import { cn } from '@/shared/utils/utils';
+
+const colors: Record<string, { bg: string; text: string }> = {
+  'direct-card': {
+    bg: 'bg-green-50 dark:bg-green-900/30',
+    text: 'text-green-600 dark:text-green-400',
+  },
+  ach: {
+    bg: 'bg-purple-50',
+    text: 'dark:text-purple-50',
+  },
+  default: {
+    bg: 'bg-amber-50',
+    text: 'dark:text-amber-50',
+  },
+};
 
 export function ClaimsWalletMax() {
   const {} = useTranslation();
@@ -216,7 +232,11 @@ export function ClaimsWalletMax() {
                   >
                     <div className="flex items-center gap-3 mb-1">
                       <div
-                        className={`p-2 rounded-full bg-${method.id === 'direct-card' ? 'green' : method.id === 'ach' ? 'purple' : 'amber'}-50 dark:bg-${method.id === 'direct-card' ? 'green' : method.id === 'ach' ? 'purple' : 'amber'}-900/30 text-${method.id === 'direct-card' ? 'green' : method.id === 'ach' ? 'purple' : 'amber'}-600 dark:text-${method.id === 'direct-card' ? 'green' : method.id === 'ach' ? 'purple' : 'amber'}-400`}
+                        className={cn(
+                          'p-2 rounded-full',
+                          colors[method.id]?.bg || colors.default.bg,
+                          colors[method.id]?.text || colors.default.text
+                        )}
                       >
                         <method.icon className="h-5 w-5" />
                       </div>
