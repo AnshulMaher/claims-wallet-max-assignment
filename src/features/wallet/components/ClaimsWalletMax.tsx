@@ -404,7 +404,7 @@ export function ClaimsWalletMax() {
                     setOtpError('');
                   }}
                   placeholder="Enter OTP"
-                  className="w-full px-4 py-2 text-center text-2xl tracking-wider rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800"
+                  className="w-full px-4 py-2 text-center text-2xl tracking-wider rounded-lg border border-gray-200 dark:border-gray-700"
                   maxLength={6}
                 />
                 {otpError && (
