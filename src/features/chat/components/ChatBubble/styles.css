@@ -19,12 +19,12 @@
 
   --chat--window--width: 380px;
   --chat--window--height: 550px;
-  --chat--window--bottom: 3rem;
+  --chat--window--bottom: 2rem;
   --chat--window--right: 1rem;
   --chat--window--z-index: 9999;
   --chat--window--border: 1px solid var(--chat--color-light-shade-100);
   --chat--window--border-radius: 0.5rem;
-  --chat--window--margin-bottom: 1rem;
+  --chat--window--margin-bottom: 3rem;
 
   --chat--header--background: var(--chat--color-primary);
   --chat--header--color: var(--chat--color-white);

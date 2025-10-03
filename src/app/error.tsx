@@ -1,6 +1,8 @@
 'use client';
 
 import React from 'react';
+import { Label } from '@/shared/components/Label';
+import { Button } from '@/shared/components/Button';
 
 interface ErrorProps {
   error: Error & { digest?: string };
@@ -9,8 +11,8 @@ interface ErrorProps {
 
 export default function Error({ error, reset }: ErrorProps) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-md w-full bg-white dark:bg-gray-800 shadow-lg rounded-lg p-8 text-center">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 pt-16">
+      <div className="max-w-md w-full bg-white dark:bg-gray-800 p-8 text-center">
         <div className="flex items-center justify-center w-16 h-16 mx-auto bg-red-100 dark:bg-red-900 rounded-full mb-6">
           <svg
             className="w-8 h-8 text-red-600 dark:text-red-400"
@@ -27,37 +29,45 @@ export default function Error({ error, reset }: ErrorProps) {
           </svg>
         </div>
 
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+        <Label
+          as="h1"
+          variant="h2"
+          className="text-gray-900 dark:text-white mb-4"
+        >
           Oops! Something went wrong
-        </h1>
-        <p className="text-gray-600 dark:text-gray-400 mb-8">
+        </Label>
+        <Label className="text-gray-600 dark:text-gray-400 mb-8">
           We encountered an unexpected error. This has been logged and our team
           will investigate.
-        </p>
+        </Label>
 
         {process.env.NODE_ENV === 'development' && (
           <div className="mb-6 p-4 bg-gray-100 dark:bg-gray-700 rounded-md text-left">
-            <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <Label
+              as="h3"
+              variant="h6"
+              className="text-gray-700 dark:text-gray-300 mb-2"
+            >
               Error Details (Development):
-            </h3>
+            </Label>
             <pre className="text-xs text-gray-600 dark:text-gray-400 overflow-auto">
               {error.message}
             </pre>
             {error.digest && (
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+              <Label
+                variant="caption"
+                className="text-gray-500 dark:text-gray-400 mt-2"
+              >
                 Error ID: {error.digest}
-              </p>
+              </Label>
             )}
           </div>
         )}
 
         <div className="space-y-4">
-          <button
-            onClick={reset}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-md transition-colors"
-          >
+          <Button onClick={reset} variant="primary" size="lg" fullWidth>
             Try Again
-          </button>
+          </Button>
         </div>
       </div>
     </div>

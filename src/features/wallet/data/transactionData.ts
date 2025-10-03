@@ -1,14 +1,18 @@
-export interface Transaction {
-  id: string;
-  date: string;
-  description: string;
-  amount: string;
-  status: 'Completed' | 'Pending' | 'Failed' | 'Processing';
-  type: 'Deposit' | 'Withdrawal' | 'Transfer' | 'Refund';
-  paymentMethod?: string;
-}
+import { TableColumn, TableRow } from '@/shared/components/Table';
 
-export const transactions: Transaction[] = [
+export const transactionColumns: TableColumn[] = [
+  { key: 'date', label: 'Date' },
+  { key: 'description', label: 'Description' },
+  { key: 'amount', label: 'Amount' },
+  { key: 'status', label: 'Status' },
+  { key: 'paymentMethod', label: 'Method' },
+];
+
+export const recentTransactionsTextData = {
+  title: 'Recent Transactions',
+};
+
+export const transactions: TableRow[] = [
   {
     id: 'txn-001',
     date: '2024-03-15',

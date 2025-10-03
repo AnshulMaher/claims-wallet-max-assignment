@@ -1,10 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
+import { Label } from '@/shared/components/Label';
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-md w-full bg-white dark:bg-gray-800 shadow-lg rounded-lg p-8 text-center">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 pt-16">
+      <div className="max-w-md w-full bg-white dark:bg-gray-800  p-8 text-center">
         <div className="flex items-center justify-center w-16 h-16 mx-auto bg-blue-100 dark:bg-blue-900 rounded-full mb-6">
           <svg
             className="w-8 h-8 text-blue-600 dark:text-blue-400"
@@ -21,17 +22,25 @@ export default function NotFound() {
           </svg>
         </div>
 
-        <h1 className="text-6xl font-bold text-gray-900 dark:text-white mb-4">
+        <Label
+          as="h1"
+          variant="h1"
+          className="text-6xl text-gray-900 dark:text-white mb-4"
+        >
           404
-        </h1>
-        <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-4">
+        </Label>
+        <Label
+          as="h2"
+          variant="h2"
+          className="text-gray-700 dark:text-gray-300 mb-4"
+        >
           Page Not Found
-        </h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-8">
+        </Label>
+        <Label className="text-gray-600 dark:text-gray-400 mb-8">
           {
             "Sorry, we couldn't find the page you're looking for. The page might have been moved, deleted, or you entered the wrong URL."
           }
-        </p>
+        </Label>
 
         <div className="space-y-4">
           <Link

@@ -3,6 +3,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, HelpCircle, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Label } from '@/shared/components/Label';
+import { Button } from '@/shared/components/Button';
 
 interface HelpItem {
   title: string;
@@ -224,7 +226,7 @@ export function HelpSidebarBase({
 
           <motion.div
             ref={sidebarRef}
-            className="fixed top-0 right-0 h-full rounded-lg bg-white dark:bg-gray-900 shadow-xl flex flex-col overflow-hidden origin-top-right z-50"
+            className="fixed top-5 right-5 bottom-5 rounded-lg bg-white dark:bg-gray-900 shadow-xl flex flex-col overflow-hidden origin-top-right z-50"
             style={{ width: `${width}px` } as React.CSSProperties}
             variants={sidebarVariants}
             initial="closed"
@@ -252,40 +254,45 @@ export function HelpSidebarBase({
             >
               <div className="flex items-center gap-2">
                 <HelpCircle className="h-5 w-5 text-blue-600" />
-                <h2 className="text-lg font-semibold">Help & Information</h2>
+                <Label as="h2" className="text-lg font-semibold">
+                  Help & Information
+                </Label>
               </div>
               <div className="flex items-center gap-2">
-                <button
+                <Button
                   onClick={() => {
                     if (width > minWidth) setWidth(width - 50);
                   }}
-                  className="p-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                  variant="icon"
+                  className="p-1"
                   disabled={width <= minWidth}
                 >
                   <ChevronRight className="h-5 w-5" />
-                </button>
-                <button
+                </Button>
+                <Button
                   onClick={() => {
                     if (width < maxWidth) setWidth(width + 50);
                   }}
-                  className="p-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                  variant="icon"
+                  className="p-1"
                   disabled={width >= maxWidth}
                 >
                   <ChevronLeft className="h-5 w-5" />
-                </button>
-                <button
+                </Button>
+                <Button
                   onClick={onClose}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === 'Escape') {
                       onClose();
                     }
                   }}
-                  className="p-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                  variant="icon"
+                  className="p-1"
                   data-testid="close-help"
                   aria-label="Close help"
                 >
                   <X className="h-5 w-5" />
-                </button>
+                </Button>
               </div>
             </motion.div>
 
@@ -294,10 +301,12 @@ export function HelpSidebarBase({
               variants={contentVariants}
             >
               <motion.div className="mb-6" variants={itemVariants}>
-                <h3 className="text-xl font-bold mb-2">{content.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400">
+                <Label as="h3" variant="h3" className="mb-2">
+                  {content.title}
+                </Label>
+                <Label className="text-gray-600 dark:text-gray-400">
                   {content.description}
-                </p>
+                </Label>
               </motion.div>
 
               {content.sections &&
@@ -307,9 +316,12 @@ export function HelpSidebarBase({
                     className="mb-8"
                     variants={itemVariants}
                   >
-                    <h4 className="text-lg font-semibold mb-3 text-blue-600 dark:text-blue-400">
+                    <Label
+                      as="h4"
+                      className="text-lg font-semibold mb-3 text-blue-600 dark:text-blue-400"
+                    >
                       {section.title}
-                    </h4>
+                    </Label>
                     <div className="space-y-4">
                       {section.items.map((item, itemIndex) => (
                         <motion.div
@@ -317,10 +329,15 @@ export function HelpSidebarBase({
                           className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg"
                           variants={itemVariants}
                         >
-                          <h5 className="font-medium mb-2">{item.title}</h5>
-                          <p className="text-gray-600 dark:text-gray-400 text-sm">
+                          <Label as="h5" variant="h5" className="mb-2">
+                            {item.title}
+                          </Label>
+                          <Label
+                            variant="body-sm"
+                            className="text-gray-600 dark:text-gray-400"
+                          >
                             {item.description}
-                          </p>
+                          </Label>
                         </motion.div>
                       ))}
                     </div>
@@ -335,10 +352,15 @@ export function HelpSidebarBase({
                       className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg"
                       variants={itemVariants}
                     >
-                      <h4 className="font-medium mb-2">{feature.title}</h4>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm">
+                      <Label as="h4" variant="h4" className="mb-2">
+                        {feature.title}
+                      </Label>
+                      <Label
+                        variant="body-sm"
+                        className="text-gray-600 dark:text-gray-400"
+                      >
                         {feature.description}
-                      </p>
+                      </Label>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -349,7 +371,10 @@ export function HelpSidebarBase({
               className="p-4 border-t border-gray-200 dark:border-gray-700"
               variants={contentVariants}
             >
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <Label
+                variant="body-sm"
+                className="text-gray-500 dark:text-gray-400"
+              >
                 Need more help? Contact support at{' '}
                 <a
                   href="mailto:support@juicefin.com"
@@ -357,7 +382,7 @@ export function HelpSidebarBase({
                 >
                   support@juicefin.com
                 </a>
-              </p>
+              </Label>
             </motion.div>
           </motion.div>
         </>

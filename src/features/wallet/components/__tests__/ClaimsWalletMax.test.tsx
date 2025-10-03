@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ClaimsWalletMax } from '@/features/wallet/components/ClaimsWalletMax';
+import { Button } from '@/shared/components/Button';
 
 jest.mock('@/features/chat/components/ChatBubble', () => ({
   ChatBubble: () => <div data-testid="chat-bubble">Chat</div>,
@@ -21,7 +22,9 @@ jest.mock('@/features/help/components/HelpSidebarBase', () => ({
       data-testid="help-sidebar"
       style={{ display: isOpen ? 'block' : 'none' }}
     >
-      <button onClick={onClose}>Close</button>
+      <Button onClick={onClose} variant="secondary">
+        Close
+      </Button>
       {children}
     </div>
   ),
@@ -35,9 +38,9 @@ jest.mock('@/features/help/components/PageHelpButton', () => ({
     onClick: () => void;
     isOpen: boolean;
   }) => (
-    <button onClick={onClick} data-testid="help-button">
+    <Button onClick={onClick} variant="secondary" data-testid="help-button">
       {isOpen ? 'Close' : 'Open'}
-    </button>
+    </Button>
   ),
 }));
 

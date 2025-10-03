@@ -43,7 +43,7 @@ export default function RootLayout({
       <body className={montserrat.className}>
         <I18nProvider>
           <Header />
-          <div className="py-16">{children}</div>
+          {children}
           <Footer />
         </I18nProvider>
       </body>
