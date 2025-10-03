@@ -30,8 +30,13 @@ function WithPaymentForm(
   WrappedComponent: React.ComponentType<PaymentFormProps>
 ) {
   function WrapperComponent(props: PaymentFormProps) {
-    const { formData, onFormDataChange, transferAmount, onAmountChange } =
-      props;
+    const {
+      formData,
+      onFormDataChange,
+      transferAmount,
+      onAmountChange,
+      processingTime,
+    } = props;
     return (
       <>
         <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 mb-6 flex items-center">
@@ -83,7 +88,7 @@ function WithPaymentForm(
         <div className="flex flex-col gap-2 text-sm text-gray-600 dark:text-gray-400 mb-6">
           <div className="flex items-center gap-2">
             <Clock className="h-4 w-4" />
-            <span>{paymentFormTextData.processingInfo.clock}</span>
+            <span>{processingTime}</span>
           </div>
           <div className="flex items-center gap-2">
             <Shield className="h-4 w-4" />

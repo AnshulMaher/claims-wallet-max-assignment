@@ -115,7 +115,7 @@ export function Modal({
                 <Button
                   onClick={onClose}
                   variant="icon"
-                  className={cn('transition-colors', closeButtonClassName)}
+                  className={cn('transition-colors p-0', closeButtonClassName)}
                   aria-label="Close modal"
                 >
                   <X className="h-6 w-6" />
